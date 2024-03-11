@@ -4,8 +4,31 @@
     --secondary: #FFC448;
     --light: #FAFAFB;
     --dark: #12141D;
+    
+}
+*{
+    font-family: "Quicksand", sans-serif;
+
+}
+.banner{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
+.pixelify-sans{
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100px;
+  font-style: normal;
+}
+.quicksand {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
 .back-to-top {
     position: fixed;
     display: none;
