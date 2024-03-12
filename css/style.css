@@ -1,34 +1,65 @@
 /********** Template CSS **********/
 :root {
-    --primary: #6244C5;
-    --secondary: #FFC448;
-    --light: #FAFAFB;
-    --dark: #12141D;
-    
-}
-*{
-    font-family: "Quicksand", sans-serif;
+    --primary: #7395ae;
+    --secondary: #501b1d;
+    --light: #123c69;
+    --dark: #112d32;
 
 }
-.banner{
+
+* {
+    font-family: "Quicksand", sans-serif;
+}
+
+.left {
+    background: grey;
+}
+
+.right {
+    background: black;
+}
+
+.main-wrapper {
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+}
+
+.section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.half {
+    background: #f9f9f9;
+    height: 50%;
+    width: 100%;
+    margin: 15px 0;
+}
+
+h4 {
+    color: #112d32;
+}
+
+
+.banner {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
 }
 
-.pixelify-sans{
-  font-family: "Pixelify Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100px;
-  font-style: normal;
-}
+
 .quicksand {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-  }
+}
+
 .back-to-top {
     position: fixed;
     display: none;
@@ -120,7 +151,7 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link  {
+    .navbar .navbar-nav .nav-link {
         padding: 10px 0;
     }
 }
@@ -128,8 +159,9 @@
 
 /*** Header ***/
 #home {
-    margin-bottom: 6rem;
+    margin-bottom: 0%;
     background: url(../img/bg-header.png) left top no-repeat;
+    height: 100vh;
 }
 
 .typed-cursor {
@@ -450,4 +482,8 @@
 
 .testimonial-carousel .owl-dot.active::after {
     background: var(--primary);
+}
+
+.bg1{
+    background-color: #a8d0e6;
 }
