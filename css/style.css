@@ -1,4 +1,98 @@
 /********** Template CSS **********/
+
+
+/********** Global Selector **********/
+*{
+    background-color: #EAE7DC;
+    font-family: "Quicksand", sans-serif;
+}
+
+/********** Fonts **********/
+
+.ubuntu {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .merriweather {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  .quicksand{
+    font-family: "Quicksand", sans-serif;
+}
+
+/********** Alignments **********/
+
+.vertical-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.center{
+    padding-top: 50%;
+}
+
+
+
+
+
+
+/********** Divs **********/
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.flex-child{
+    width: 90vw;
+    height: 90vw;
+}
+
+
+/********** Alignments **********/
+/********** Alignments **********/
+/********** Alignments **********/
+/********** Alignments **********/
+/********** Alignments **********/
+/********** Alignments **********/
+/********** Alignments **********/
+
+
+  
+
+
+.banner-text{
+    width: 90vw;
+}
+
+.text-heading{
+    font-size: 200px;
+}
+
+.text-color-red{
+    color: #17252A;
+}
+.line-right{
+    border: none;
+    border-left: solid #000000 4px;
+}
+
+
+
+.center{
+    padding-top: 50%;
+}
+
+
+
+
 :root {
     --primary: #7395ae;
     --secondary: #501b1d;
