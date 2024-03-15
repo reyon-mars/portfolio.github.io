@@ -25,6 +25,23 @@
     font-family: "Quicksand", sans-serif;
 }
 
+/********** Color **********/
+
+.white{
+    color: white;
+}
+.background-white{
+    background-color: white;
+}
+.background-green {
+    background: linear-gradient(45deg, rgb(27, 108, 104) 0%, rgb(34, 146, 139) 35%, rgba(44,205,198,1) 100%);
+}
+.transparent{
+    background: transparent;
+}
+
+
+
 /********** Alignments **********/
 
 .vertical-center {
@@ -191,7 +208,7 @@
   .loader:before , .loader:after {
     content: "";
     position: absolute;
-    left: -200%;
+    left: -150%;
     bottom: -250%;
     width: 595px;
     height: 595px;
@@ -224,7 +241,7 @@
 /********** Image Overlay **********/
 .overlay{
     position: absolute;
-    left: -670%;
+    left: -610%;
     bottom: -272%;
     z-index: 1;
     background: transparent;
