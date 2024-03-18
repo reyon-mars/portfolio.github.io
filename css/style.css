@@ -1,4 +1,4 @@
-/********** Template CSS **********/
+/********** CSS **********/
 
 
 /********** Global Selector **********/
@@ -38,6 +38,10 @@
 }
 .transparent{
     background: transparent;
+}
+
+.center-div{
+    margin: 0 auto;
 }
 
 
