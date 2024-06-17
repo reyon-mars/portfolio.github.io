@@ -1,11 +1,6 @@
 /********** CSS **********/
 
 
-/********** Global Selector **********/
-* {
-    background-color: #FFF;
-    color: #17252A;
-}
 
 /********** Fonts **********/
 
@@ -35,10 +30,6 @@
     background-color: white;
 }
 
-.background-green {
-    background: linear-gradient(45deg, rgb(27, 108, 104) 0%, rgb(34, 146, 139) 35%, rgba(44, 205, 198, 1) 100%);
-}
-
 .transparent {
     background: transparent;
 }
@@ -61,6 +52,10 @@
     padding-top: 50%;
 }
 
+.center-block{
+    margin: auto;
+}
+
 
 /********** Text styles **********/
 
@@ -72,23 +67,11 @@
     text-align: center;
 }
 
-.center {
-    margin: 0 auto;
-}
-
-
 
 
 /********** Divs **********/
 
-.banner {
-    background-color: #FAFDFE;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 
-}
 
 .main-container {
     display: flex;
@@ -849,43 +832,43 @@ h4 {
     background-color: #a8d0e6;
 }
 
-h1 {
+.heading1 {
     font-size: 42px;
     padding-bottom: 14px;
     margin-bottom: 0px;
 }
 
-h2 {
+.h2 {
     font-size: 42px;
     line-height: 52px;
     margin-top: 0px;
 }
 
-h3 {
+.h3 {
     font-size: 26px;
     line-height: 32px;
     padding-bottom: 6px;
 }
 
-h4 {
+.welcome {
     color: #999;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: normal;
     letter-spacing: 2px;
     text-transform: uppercase;
     padding-top: 6px;
 }
 
-h5 {
+.h5 {
     color: #666666;
 }
 
-strong {
+.strong {
     color: #232B2B;
     font-weight: normal;
 }
 
-p {
+.p {
     color: #888;
     font-size: 16px;
     font-weight: 300;
@@ -940,7 +923,7 @@ p {
 }
 
 #home .home-img {
-    background: url('../images/home-img.jpg') no-repeat;
+    background: url('/img/Profile.png') no-repeat;
     background-size: cover;
     background-position: 50% 50%;
     width: 100%;
@@ -958,4 +941,18 @@ p {
     align-items: center;
     height: 100vh;
     padding: 0 45px 0 45px;
+}
+
+
+#loader {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: #ffffffff;
 }
