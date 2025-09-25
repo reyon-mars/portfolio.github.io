@@ -1,16 +1,16 @@
 /**
  * RESPONSIVE PORTFOLIO JAVASCRIPT
  * Author: Reyon Rai
- * Version: 2.0 - Enhanced with legacy support
+ * Version: 2.1 - Fixed Legacy Issues
  */
 
 // ===================================
-// LEGACY JQUERY FUNCTIONALITY
+// LEGACY JQUERY FUNCTIONALITY - PRESERVED EXACTLY
 // ===================================
 (function ($) {
     "use strict";
 
-    // Spinner (Legacy)
+    // Spinner - EXACTLY as original
     var spinner = function () {
         setTimeout(function () {
             if ($('#spinner').length > 0) {
@@ -20,12 +20,12 @@
     };
     spinner();
 
-    // Initiate the wowjs (Legacy)
+    // Initiate the wowjs - EXACTLY as original
     if (typeof WOW !== 'undefined') {
         new WOW().init();
     }
 
-    // Navbar on scrolling (Legacy - Enhanced)
+    // Navbar on scrolling - EXACTLY as original
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
             $('.navbar').fadeIn('slow').css('display', 'flex');
@@ -34,7 +34,7 @@
         }
     });
 
-    // Smooth scrolling on the navbar links (Legacy - Enhanced)
+    // Smooth scrolling on the navbar links - EXACTLY as original
     $(".navbar-nav a").on('click', function (event) {
         if (this.hash !== "") {
             event.preventDefault();
@@ -47,19 +47,10 @@
                 $('.navbar-nav .active').removeClass('active');
                 $(this).closest('a').addClass('active');
             }
-
-            // Close mobile menu if open (Enhanced)
-            const navbarCollapse = document.querySelector('#navbarCollapse');
-            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                if (bsCollapse) {
-                    bsCollapse.hide();
-                }
-            }
         }
     });
 
-    // Back to top button (Legacy)
+    // Back to top button - EXACTLY as original
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
             $('.back-to-top').fadeIn('slow');
@@ -72,7 +63,7 @@
         return false;
     });
 
-    // Typed Initiate (Legacy)
+    // Typed Initiate - EXACTLY as original
     if ($('.typed-text-output').length == 1 && typeof Typed !== 'undefined') {
         var typed_strings = $('.typed-text').text();
         var typed = new Typed('.typed-text-output', {
@@ -84,7 +75,7 @@
         });
     }
 
-    // Modal Video (Legacy)
+    // Modal Video - EXACTLY as original
     var $videoSrc;
     $('.btn-play').click(function () {
         $videoSrc = $(this).data("src");
@@ -97,7 +88,7 @@
         $("#video").attr('src', $videoSrc);
     });
 
-    // Facts counter (Legacy)
+    // Facts counter - EXACTLY as original
     if ($.fn.counterUp) {
         $('[data-toggle="counter-up"]').counterUp({
             delay: 10,
@@ -105,7 +96,7 @@
         });
     }
 
-    // Skills (Legacy - Enhanced with fallback)
+    // Skills - EXACTLY as original
     if ($.fn.waypoint) {
         $('.skill').waypoint(function () {
             $('.progress .progress-bar').each(function () {
@@ -114,7 +105,7 @@
         }, { offset: '80%' });
     }
 
-    // Portfolio isotope and filter (Legacy)
+    // Portfolio isotope and filter - EXACTLY as original
     if ($.fn.isotope) {
         var portfolioIsotope = $('.portfolio-container').isotope({
             itemSelector: '.portfolio-item',
@@ -127,7 +118,7 @@
         });
     }
 
-    // Testimonials carousel (Legacy)
+    // Testimonials carousel - EXACTLY as original
     if ($.fn.owlCarousel) {
         $(".testimonial-carousel").owlCarousel({
             autoplay: true,
@@ -141,7 +132,25 @@
 })(jQuery);
 
 // ===================================
-// MODERN VANILLA JS FUNCTIONALITY
+// LEGACY DOM CONTENT LOADED - EXACTLY AS ORIGINAL
+// ===================================
+document.addEventListener('DOMContentLoaded', function () {
+    const loader = document.querySelector('#loader');
+
+    // EXACTLY as original - 3500ms timing preserved
+    function removeLoader() {
+        setTimeout(() => {
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }, 3500);
+    }
+
+    removeLoader();
+});
+
+// ===================================
+// ADDITIONAL RESPONSIVE ENHANCEMENTS - NON-INTRUSIVE
 // ===================================
 (function() {
     'use strict';
@@ -150,9 +159,6 @@
     // UTILITY FUNCTIONS
     // ===================================
 
-    /**
-     * Debounce function to limit the rate at which a function can fire
-     */
     function debounce(func, wait, immediate) {
         let timeout;
         return function executedFunction() {
@@ -169,9 +175,6 @@
         };
     }
 
-    /**
-     * Throttle function to limit function execution
-     */
     function throttle(func, limit) {
         let lastFunc;
         let lastRan;
@@ -194,202 +197,36 @@
     }
 
     // ===================================
-    // ENHANCED PRELOADER MANAGEMENT
+    // RESPONSIVE MOBILE MENU ENHANCEMENT
     // ===================================
 
-    /**
-     * Handle preloader with legacy and modern support
-     */
-    function initEnhancedPreloader() {
-        const loader = document.querySelector('#loader');
+    function initMobileMenuEnhancements() {
+        // Close mobile menu when clicking on a link (enhancement only)
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
         
-        if (!loader) return;
-
-        // Legacy loader removal (maintaining original timing)
-        function removeLoader() {
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                loader.style.transition = 'opacity 0.5s ease';
-                
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 3500); // Maintaining original 3.5s timing
-        }
-
-        // Modern loader with window load event
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                if (loader.style.display !== 'none') {
-                    loader.style.opacity = '0';
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                    }, 300);
-                }
-            }, 1500);
-        });
-
-        // Execute legacy removal
-        removeLoader();
-
-        // Fallback safety net
-        setTimeout(() => {
-            if (loader && loader.style.display !== 'none') {
-                loader.style.display = 'none';
-            }
-        }, 8000);
-    }
-
-    // ===================================
-    // ENHANCED NAVIGATION
-    // ===================================
-
-    /**
-     * Enhanced smooth scrolling (works alongside jQuery version)
-     */
-    function initEnhancedSmoothScrolling() {
-        // Only add if jQuery version doesn't handle it
-        const vanillaNavLinks = document.querySelectorAll('a[href^="#"]:not(.navbar-nav a)');
-        
-        vanillaNavLinks.forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 45;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    }
-
-    /**
-     * Enhanced active navigation with legacy support
-     */
-    function initEnhancedActiveNavigation() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        const updateActiveLink = throttle(() => {
-            let current = '';
-            const scrollPosition = window.pageYOffset + 200;
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition <= sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            // Update both jQuery and vanilla JS active states
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Also update jQuery active states if they exist
-            if (typeof jQuery !== 'undefined') {
-                jQuery('.navbar-nav .active').removeClass('active');
-                jQuery(`.navbar-nav a[href="#${current}"]`).addClass('active');
-            }
-        }, 100);
-
-        window.addEventListener('scroll', updateActiveLink);
-        updateActiveLink();
-    }
-
-    // ===================================
-    // ENHANCED SKILLS ANIMATION
-    // ===================================
-
-    /**
-     * Enhanced progress bar animation with legacy fallback
-     */
-    function animateProgressBars() {
-        const progressBars = document.querySelectorAll('.progress-bar');
-        
-        progressBars.forEach(bar => {
-            // Get width from style attribute or aria-valuenow (legacy support)
-            const width = bar.style.width || (bar.getAttribute('aria-valuenow') + '%');
-            
-            bar.style.width = '0%';
-            bar.style.transition = 'width 2s ease-in-out';
-            
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 200);
-        });
-    }
-
-    /**
-     * Enhanced skills section with Intersection Observer and Waypoints fallback
-     */
-    function initEnhancedSkillsAnimation() {
-        const skillSection = document.querySelector('#skill');
-        
-        if (!skillSection) return;
-
-        // Modern Intersection Observer approach
-        if (window.IntersectionObserver) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateProgressBars();
-                        observer.unobserve(entry.target);
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const navbarCollapse = document.querySelector('#navbarCollapse');
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = window.bootstrap ? bootstrap.Collapse.getInstance(navbarCollapse) : null;
+                    if (bsCollapse) {
+                        bsCollapse.hide();
                     }
-                });
-            }, { threshold: 0.3 });
-
-            observer.observe(skillSection);
-        } else {
-            // Fallback for older browsers (works with existing Waypoints)
-            const fallbackCheck = () => {
-                const rect = skillSection.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight * 0.8;
-                
-                if (isVisible) {
-                    animateProgressBars();
-                    window.removeEventListener('scroll', fallbackCheck);
                 }
-            };
-            
-            window.addEventListener('scroll', fallbackCheck);
-            fallbackCheck(); // Check immediately
-        }
-    }
+            });
+        });
 
-    // ===================================
-    // RESPONSIVE ENHANCEMENTS
-    // ===================================
-
-    /**
-     * Enhanced responsive handling
-     */
-    function initResponsiveEnhancements() {
+        // Handle resize to close mobile menu on desktop
         const handleResize = debounce(() => {
-            // Handle navbar collapse on desktop
-            const navbarCollapse = document.querySelector('#navbarCollapse');
-            if (window.innerWidth >= 992 && navbarCollapse?.classList.contains('show')) {
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                if (bsCollapse) {
-                    bsCollapse.hide();
+            if (window.innerWidth >= 992) {
+                const navbarCollapse = document.querySelector('#navbarCollapse');
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = window.bootstrap ? bootstrap.Collapse.getInstance(navbarCollapse) : null;
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    }
                 }
             }
-
-            // Recalculate dynamic elements
-            updateDynamicElements();
         }, 250);
 
         window.addEventListener('resize', handleResize);
@@ -398,28 +235,11 @@
         });
     }
 
-    /**
-     * Update dynamic elements for responsive behavior
-     */
-    function updateDynamicElements() {
-        const homeContainer = document.querySelector('.home-container');
-        if (homeContainer) {
-            if (window.innerWidth <= 768) {
-                homeContainer.style.minHeight = 'auto';
-            } else {
-                homeContainer.style.minHeight = '100vh';
-            }
-        }
-    }
-
     // ===================================
     // ENHANCED FORM HANDLING
     // ===================================
 
-    /**
-     * Enhanced contact form with better validation
-     */
-    function initEnhancedFormHandling() {
+    function initFormEnhancements() {
         const contactForms = document.querySelectorAll('.form, form');
         
         contactForms.forEach(form => {
@@ -439,7 +259,6 @@
                     return;
                 }
 
-                // Enhanced submission handling
                 const originalText = submitBtn.textContent;
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Processing...';
@@ -454,9 +273,10 @@
         });
     }
 
-    /**
-     * Enhanced notification system
-     */
+    // ===================================
+    // NOTIFICATION SYSTEM
+    // ===================================
+
     function showNotification(message, type = 'info') {
         // Remove existing notifications
         document.querySelectorAll('.notification').forEach(n => n.remove());
@@ -498,79 +318,127 @@
     }
 
     // ===================================
-    // INTERSECTION OBSERVER ENHANCEMENTS
+    // FALLBACK PROGRESS BAR ANIMATION
     // ===================================
 
-    /**
-     * Enhanced intersection observer for animations
-     */
-    function initEnhancedIntersectionObserver() {
-        if (!window.IntersectionObserver) return;
+    function initProgressBarFallback() {
+        // Only if waypoints is not available
+        if (typeof jQuery === 'undefined' || !jQuery.fn.waypoint) {
+            const skillSection = document.querySelector('#skill');
+            
+            if (!skillSection) return;
 
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+            // Use Intersection Observer if available
+            if (window.IntersectionObserver) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateProgressBars();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    entry.target.classList.add('visible');
+                observer.observe(skillSection);
+            } else {
+                // Manual scroll detection fallback
+                const fallbackCheck = throttle(() => {
+                    const rect = skillSection.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.8;
                     
-                    // Special handling for different sections
-                    if (entry.target.id === 'skill') {
-                        setTimeout(() => animateProgressBars(), 200);
+                    if (isVisible) {
+                        animateProgressBars();
+                        window.removeEventListener('scroll', fallbackCheck);
+                    }
+                }, 100);
+                
+                window.addEventListener('scroll', fallbackCheck);
+                fallbackCheck();
+            }
+        }
+    }
+
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        
+        progressBars.forEach(bar => {
+            const width = bar.style.width || (bar.getAttribute('aria-valuenow') + '%');
+            
+            bar.style.width = '0%';
+            bar.style.transition = 'width 3s ease-in-out';
+            
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 100);
+        });
+    }
+
+    // ===================================
+    // SMOOTH SCROLLING FALLBACK
+    // ===================================
+
+    function initSmoothScrollingFallback() {
+        // Only add for non-navbar links if jQuery version doesn't handle them
+        const nonNavbarLinks = document.querySelectorAll('a[href^="#"]:not(.navbar-nav a):not(.nav-link)');
+        
+        nonNavbarLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 45;
+                    
+                    // Check if jQuery animate is available and use it, otherwise use vanilla
+                    if (typeof jQuery !== 'undefined' && jQuery.fn.animate) {
+                        jQuery('html, body').animate({
+                            scrollTop: targetPosition
+                        }, 1500, 'easeInOutExpo');
+                    } else {
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
                     }
                 }
             });
-        }, observerOptions);
-
-        // Observe sections and animated elements
-        const elementsToObserve = document.querySelectorAll('section, .fadeInUp, .fadeIn');
-        elementsToObserve.forEach(element => observer.observe(element));
+        });
     }
 
     // ===================================
     // INITIALIZATION
     // ===================================
 
-    /**
-     * Initialize enhanced animations
-     */
-    function initEnhancedAnimations() {
-        const fadeElements = document.querySelectorAll('.fadeInUp, .fadeIn');
-        fadeElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(50px)';
-            element.style.transition = 'all 0.8s ease-out';
-        });
-    }
-
-    /**
-     * Main enhanced initialization
-     */
-    function initEnhanced() {
+    function initEnhancements() {
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initEnhanced);
+            document.addEventListener('DOMContentLoaded', initEnhancements);
             return;
         }
 
-        // Initialize enhanced features
-        initEnhancedPreloader();
-        initEnhancedSmoothScrolling();
-        initEnhancedActiveNavigation();
-        initEnhancedSkillsAnimation();
-        initEnhancedFormHandling();
-        initResponsiveEnhancements();
-        initEnhancedIntersectionObserver();
-        initEnhancedAnimations();
+        // Initialize non-intrusive enhancements
+        initMobileMenuEnhancements();
+        initFormEnhancements();
+        initProgressBarFallback();
+        initSmoothScrollingFallback();
 
-        updateDynamicElements();
-
-        console.log('Enhanced portfolio features initialized!');
+        console.log('Portfolio enhancements initialized!');
     }
+
+    // ===================================
+    // ERROR HANDLING
+    // ===================================
+
+    window.addEventListener('error', function(e) {
+        console.warn('Portfolio Enhancement Error:', e.error);
+    });
+
+    window.addEventListener('unhandledrejection', function(e) {
+        console.warn('Portfolio Enhancement Promise Rejection:', e.reason);
+        e.preventDefault();
+    });
 
     // ===================================
     // GLOBAL EXPORTS
@@ -579,33 +447,11 @@
     window.PortfolioEnhanced = {
         showNotification,
         animateProgressBars,
-        updateDynamicElements,
         debounce,
         throttle
     };
 
-    // Start enhanced initialization
-    initEnhanced();
+    // Start enhancements
+    initEnhancements();
 
 })();
-
-// ===================================
-// LEGACY DOM CONTENT LOADED
-// ===================================
-document.addEventListener('DOMContentLoaded', function () {
-    const loader = document.querySelector('#loader');
-
-    // Legacy loader function (maintained for compatibility)
-    function removeLoader() {
-        setTimeout(() => {
-            if (loader) {
-                loader.style.display = 'none';
-            }
-        }, 3500);
-    }
-
-    // Only run legacy if loader exists and no enhanced version handled it
-    if (loader && loader.style.display !== 'none') {
-        removeLoader();
-    }
-});
